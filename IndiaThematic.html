@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Indian State Map</title>
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" href="leaflet.tooltip.css" />
+    <script src="leaflet/leaflet.js"></script>
+    <script src="leaflet/leaflet-src.esm.js"></script>
+    <script src="leaflet/leaflet-src.js"></script>
+    <script src="leaflet/jquery-3.6.0.min.js"></script>
+
+    <script src="State.js"></script>
+    <script src="jsonData.js"></script>
+
+    <script src="india.js"></script>
+    <script src="CreateMap.js"></script>
+  </head>
+  <body>
+    <!-- Map container -->
+    <div id="map" style="width: 1300px; height: 770px"></div>
+
+    <script>
+      CreateMap(map);
+    </script>
+  </body>
+</html>

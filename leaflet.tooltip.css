@@ -1,0 +1,111 @@
+.leaflet-tooltip.my-labels {
+  line-height: 0px;
+  margin-top: 9px;
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 8px;
+  color: black;
+}
+
+.legend {
+  line-height: 18px;
+  margin-top: 9px;
+  border: white;
+  color: #555;
+  background-color: white;
+  font-weight: bold;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  font-weight: bold;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+.info {
+  padding: 6px 8px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: left;
+  line-height: 1.5;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.my-labels {
+  font-size: 12px;
+  color: black;
+}
+/* Styling the dropdown container inside the map */
+.dropdown-container {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  padding: 10px 15px; /* Padding for a better look */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  font-family: Arial, sans-serif; /* Clean font */
+  font-size: 14px; /* Adjust text size */
+  color: #333; /* Text color */
+  border: 1px solid #ccc; /* Light border for structure */
+}
+
+/* Label styling */
+.dropdown-container label {
+  display: block; /* Ensure label stays above the dropdown */
+  font-size: 14px;
+  font-weight: bold; /* Make the label bold */
+  margin-bottom: 5px; /* Spacing between label and dropdown */
+  color: #444; /* Slightly darker label text */
+}
+
+/* Dropdown select styling */
+.dropdown-container select {
+  width: 100%; /* Full width for better alignment */
+  padding: 8px 12px; /* Inner padding */
+  font-size: 14px; /* Font size for consistency */
+  border: 1px solid #aaa; /* Subtle border */
+  border-radius: 6px; /* Rounded corners */
+  background: #f9f9f9; /* Light gray background */
+  color: #333; /* Text color */
+  outline: none; /* Remove outline on focus */
+  transition: all 0.3s ease; /* Smooth transitions for hover and focus */
+}
+
+/* Dropdown hover effect */
+.dropdown-container select:hover {
+  border-color: #555; /* Darker border on hover */
+  background: #fff; /* White background on hover */
+}
+
+/* Dropdown focus effect */
+.dropdown-container select:focus {
+  border-color: #0078d7; /* Blue border on focus */
+  box-shadow: 0 0 6px rgba(0, 120, 215, 0.5); /* Glow effect */
+}
+
+/* Selected option styling */
+.dropdown-container select option:checked {
+  font-weight: bold; /* Bold font for selected option */
+  color: #0078d7; /* Blue text for selected option */
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+  .dropdown-container {
+    padding: 8px 12px; /* Adjust padding */
+    font-size: 12px; /* Smaller font */
+  }
+
+  .dropdown-container select {
+    font-size: 12px; /* Adjust font for dropdown */
+    padding: 6px 10px; /* Adjust inner padding */
+  }
+}
