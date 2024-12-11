@@ -152,6 +152,32 @@ function CreateMap(map) {
   // Add dropdown to the map
   map.addControl(new DropdownControl({ position: "topright" }));
 
+  // Add a dropdown control for filtering based on thresholds
+  const FilterControl = L.Control.extend({
+    onAdd: function () {
+      const container = L.DomUtil.create("div", "filter-container leaflet-bar");
+
+      container.innerHTML = `
+        <label for="filterSelector">Filter:</label>
+        <select id="filterSelector">
+          <option value="none">No Filter</option>
+          <option value="50">&gt; 50</option>
+          <option value="100">&gt; 100</option>
+          <option value="150">&gt; 150</option>
+          <option value="200">&gt; 200</option>
+          <option value="500">&gt; 500</option>
+          <option value="1000">&gt; 1000</option>
+        </select>
+      `;
+      L.DomEvent.disableClickPropagation(container);
+
+      return container;
+    },
+  });
+
+  // Add the filter dropdown to the map
+  map.addControl(new FilterControl({ position: "topright" }));
+
   // Update state values on dropdown change
   document
     .getElementById("variableSelector")
@@ -161,7 +187,31 @@ function CreateMap(map) {
 
       StateLayer.clearLayers(); // Clear old layers
       StateLayer.addData(state); // Add updated data
+
+      // Reset the filter dropdown to "No Filter"
+      document.getElementById("filterSelector").value = "none";
     });
+
+  // Update state highlighting based on the filter selection
+  document.getElementById("filterSelector").addEventListener("change", (e) => {
+    const selectedThreshold = parseInt(e.target.value);
+
+    StateLayer.eachLayer((layer) => {
+      const stateValue = layer.feature.properties.value;
+
+      if (!isNaN(selectedThreshold) && stateValue > selectedThreshold) {
+        // Highlight states meeting the threshold
+        layer.setStyle({
+          color: "red",
+          fillColor: "red",
+          fillOpacity: 0.7,
+        });
+      } else {
+        // Reset style for states not meeting the threshold
+        layer.setStyle(style(layer.feature));
+      }
+    });
+  });
 
   // Add permanent labels for each state
   for (let i = 0; i < stateFeaturesLength; i++) {
@@ -265,4 +315,8 @@ function CreateMap(map) {
   function showCount(e, feature) {
     info.update(feature.properties); // Update info control
   }
+
+  window.addEventListener("resize", () => {
+    map.invalidateSize();
+  });
 }
